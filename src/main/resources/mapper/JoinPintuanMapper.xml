@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zhouyunlong.pintuan.dao.JoinPintuanMapper">
+
+    <select id="selectByMemberIdForUpdate" resultType="com.example.zhouyunlong.pintuan.entity.GroupActivityRel">
+        SELECT * FROM group_activity_rel where group_member_id = #{group_member_id} for update
+    </select>
+
+    <select id="selectByMemberIdAndGroupIdForUpdate" resultType="com.example.zhouyunlong.pintuan.entity.GroupActivityRel">
+        SELECT * FROM group_activity_rel where group_member_id = #{group_member_id} AND id = #{id} for update
+    </select>
+
+    <select id="selectByGroupIdForUpdate" resultType="com.example.zhouyunlong.pintuan.entity.GroupActivityRel">
+        SELECT * FROM group_activity_rel where id = #{id} for update
+    </select>
+</mapper>
