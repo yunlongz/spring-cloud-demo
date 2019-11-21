@@ -102,4 +102,19 @@ public class WxController {
             }
         });
     }
+
+    @SysLog(descrption = "生成小程序海报")
+    @GetMapping("/create/qrcode")
+    public void createQrCode() throws WxErrorException{
+//        d3a211eea6794b89be26f930a57dfb02
+        List<WxMaProperties.Config> configs = wxMaProperties.getConfigs();
+        configs.forEach(config -> {
+            final WxMaService wxMaService = WxMaConfiguration.getMaService(config.getAppid());
+            try {
+                wxMaService.getQrcodeService().createWxaCodeUnlimit("a=1","pages/index/index");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }
