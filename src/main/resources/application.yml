@@ -17,7 +17,9 @@ spring:
     timeout: 1000
   application:
     name: cmsmpwx
-
+  batch:
+    job:
+      enabled: false
 logging:
   level:
     root: info

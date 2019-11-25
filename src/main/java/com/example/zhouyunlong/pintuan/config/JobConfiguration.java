@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.BatchConfigurationException;
+import org.springframework.batch.core.configuration.JobFactory;
 import org.springframework.batch.core.configuration.annotation.*;
 import org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor;
 import org.springframework.batch.core.configuration.support.MapJobRegistry;
@@ -110,6 +111,10 @@ public class JobConfiguration {
         threadPoolTaskExecutor.setKeepAliveSeconds(30000);
         threadPoolTaskExecutor.setMaxPoolSize(1000);
         threadPoolTaskExecutor.setQueueCapacity(1024);
+        threadPoolTaskExecutor.setThreadNamePrefix("Data-Job");
         return threadPoolTaskExecutor;
+    }
+    public static void main(String[] args) {
+
     }
 }

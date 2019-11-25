@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.*;
 public class WxMaUserController {
     @Autowired
     RedisUtil redisUtil;
-    @CreateCache(name = "formCache-", expire = 3600)
     private Cache<String, String> formCache;
     /**
      * 登陆接口
@@ -47,9 +46,6 @@ public class WxMaUserController {
 
         try {
             WxMaJscode2SessionResult session = wxService.getUserService().getSessionInfo(code);
-            formCache.put(session.getOpenid(), session.getSessionKey());
-            redisUtil.set(session.getOpenid(), session.getSessionKey());
-            log.info("formCache open {}", formCache.get(session.getOpenid()));
             //TODO 可以增加自己的逻辑，关联业务相关数据
 
             return CommonResult.ok(session);
