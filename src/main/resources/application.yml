@@ -70,7 +70,8 @@ wx:
   miniapp:
     configs:
       - appid: wx9e21023282f95ec6 #微信小程序的appid,龙粉人气榜
-        secret: 8482a8aacf4adb45a7a524ac1455794e #微信小程序的Secret
+#        secret: 8482a8aacf4adb45a7a524ac1455794e #微信小程序的Secret
+        secret: testa8aacf4adb45a7a524ac1455794e #微信小程序的Secret
         token: longzhifu #微信小程序消息服务器配置的token
         aesKey: WUJz11LvaL23C6OaPoSiHzByGs7YVC7Gz13YpAfaMQJ #微信小程序消息服务器配置的EncodingAESKey
         msgDataFormat: JSON
