@@ -1,0 +1,112 @@
+DROP TABLE user_subscribe;
+
+CREATE TABLE user_subscribe ( id NUMBER ( 20 ) primary key,
+template_id VARCHAR2(50),
+openid VARCHAR2(30),
+subscribe_status NUMBER(1),
+send_status NUMBER(1),
+host_ip VARCHAR2(30),
+appid VARCHAR2 (30),
+create_time timestamp,
+update_time timestamp
+);
+
+
+
+CREATE TABLE user_action_outer_link (
+	id NUMBER(20) primary key,
+	session_id VARCHAR2(30),
+	chnl_id VARCHAR2(8),
+	kik_id VARCHAR2(32),
+	user_id VARCHAR2(32),
+	source_id VARCHAR2(16),
+	sdk_version VARCHAR2(32),
+	wechat_version VARCHAR2(32),
+	battery_level VARCHAR2(32),
+	brand VARCHAR2(128),
+	model VARCHAR2(128),
+	platform VARCHAR2(128),
+	system VARCHAR2(128),
+	err_msg CLOB,
+	font_size_setting VARCHAR2(32),
+	language VARCHAR2(64),
+	pixel_ratio VARCHAR2(12),
+	screen_height VARCHAR2(12),
+	screen_width VARCHAR2(12),
+	status_bar_height VARCHAR2(12),
+	widow_height VARCHAR2(12),
+	window_hidth VARCHAR2(12),
+	safe_top VARCHAR2(12),
+	safe_right VARCHAR2(12),
+	safe_left VARCHAR2(12),
+	safe_bottom VARCHAR2(12),
+	start_time VARCHAR2(20),
+	end_time VARCHAR2(20)
+);
+
+
+
+--客户行为流水表
+CREATE TABLE user_action_log (
+	id NUMBER(20) primary key,
+	session_id VARCHAR2(30),
+	action_type VARCHAR2(8),
+	page_id VARCHAR2(32),
+	page_router VARCHAR2(32),
+	page_desc VARCHAR2(128),
+	element_id VARCHAR2(128),
+	action_time VARCHAR2(20)
+	);
+	
+---sessionId 本次连接ID
+---action_type 行为类型
+---pageId 页面id
+---pageRouter 跳转页面名称
+---pageDesc 页面描述
+---elementId 元素ID
+---elementDesc 元素描述
+---time 行为时间
+
+
+
+
+
+comment on column user_action_outer_link.session_id is 'sessionid';
+
+
+CREATE SEQUENCE user_action_log_sequence
+
+MAXVALUE 9999999999999999
+
+MINVALUE 1
+
+START WITH 1
+
+INCREMENT BY 1
+
+CACHE 1000;
+
+
+CREATE SEQUENCE user_action_outer_link_seq
+
+MAXVALUE 9999999999999999
+
+MINVALUE 1
+
+START WITH 1
+
+INCREMENT BY 1
+
+CACHE 1000;
+
+CREATE SEQUENCE user_subscribe_sequence
+
+MAXVALUE 9999999999999
+
+MINVALUE 1
+
+START WITH 1
+
+INCREMENT BY 1
+
+CACHE 1000;
